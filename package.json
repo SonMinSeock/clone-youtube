@@ -7,7 +7,7 @@
     "win": "babel-node src/index.js",
     "dev:server": "nodemon",
     "dev:assets": "webpack",
-    "start": "node index.js"
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
