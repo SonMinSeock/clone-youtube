@@ -4,7 +4,7 @@ mongoose.set("strictQuery", true);
 
 mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
+  useUnifiedTopology: false,
 });
 
 const db = mongoose.connection;
