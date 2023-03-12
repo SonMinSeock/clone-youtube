@@ -7,7 +7,8 @@
     "win": "babel-node src/index.js",
     "dev:server": "nodemon",
     "dev:assets": "webpack",
-    "start": "babel-node src/index.js"
+    "build:server": "babel src -d build",
+    "start": "node build/init.js"
   },
   "repository": {
     "type": "git",
@@ -35,7 +36,8 @@
     "pug": "^3.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.2",
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.0",
     "@babel/node": "^7.20.2",
     "@babel/preset-env": "^7.20.2",
     "babel-loader": "^9.1.2",
