@@ -6,7 +6,7 @@ _mongoose["default"].set("strictQuery", true);
 _mongoose["default"].connect(process.env.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: false,
-  autoIndex: false
+  autoIndex: true
 });
 var db = _mongoose["default"].connection;
 var handleOpen = function handleOpen() {
