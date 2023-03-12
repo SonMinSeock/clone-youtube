@@ -5,8 +5,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 _mongoose["default"].set("strictQuery", true);
 _mongoose["default"].connect(process.env.DB_URL, {
   useNewUrlParser: true,
-  useUnifiedTopology: false,
-  useCreateIndex: true
+  useUnifiedTopology: false
 });
 var db = _mongoose["default"].connection;
 var handleOpen = function handleOpen() {
