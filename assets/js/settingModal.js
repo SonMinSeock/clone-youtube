@@ -1,0 +1,1 @@
+(()=>{const e=document.querySelector(".video__info__setting__icon"),d=document.querySelector(".video__info__setting"),i=document.querySelector(".overlay"),s=e=>{"hidden"===d.classList[1]?(i.classList.remove("hidden"),d.classList.remove("hidden")):(d.classList.add("hidden"),i.classList.add("hidden")),console.log(e)};e.addEventListener("click",s),i.addEventListener("click",s)})();
