@@ -195,6 +195,8 @@ export const finishKakoLogin = async (req, res) => {
 
   const json = await data.json();
 
+  console.log("kakao json : ", json);
+
   if ("access_token" in json) {
     const { access_token } = json;
 
@@ -208,6 +210,7 @@ export const finishKakoLogin = async (req, res) => {
       })
     ).json();
 
+    console.log("kakao user data : ", userData);
     if (!userData) {
       return res.redirect("/login");
     }

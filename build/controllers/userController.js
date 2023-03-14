@@ -307,40 +307,42 @@ var finishKakoLogin = /*#__PURE__*/function () {
             return data.json();
           case 11:
             json = _context4.sent;
+            console.log("kakao json : ", json);
             if (!("access_token" in json)) {
-              _context4.next = 34;
+              _context4.next = 36;
               break;
             }
             access_token = json.access_token;
             apiUrl = "https://kapi.kakao.com";
-            _context4.next = 17;
+            _context4.next = 18;
             return (0, _nodeFetch["default"])("".concat(apiUrl, "/v2/user/me"), {
               headers: {
                 Authorization: "Bearer ".concat(access_token)
               }
             });
-          case 17:
-            _context4.next = 19;
+          case 18:
+            _context4.next = 20;
             return _context4.sent.json();
-          case 19:
+          case 20:
             userData = _context4.sent;
+            console.log("kakao user data : ", userData);
             if (userData) {
-              _context4.next = 22;
+              _context4.next = 24;
               break;
             }
             return _context4.abrupt("return", res.redirect("/login"));
-          case 22:
-            _context4.next = 24;
+          case 24:
+            _context4.next = 26;
             return _User["default"].findOne({
               email: userData.kakao_account.email
             });
-          case 24:
+          case 26:
             user = _context4.sent;
             if (user) {
-              _context4.next = 29;
+              _context4.next = 31;
               break;
             }
-            _context4.next = 28;
+            _context4.next = 30;
             return _User["default"].create({
               email: userData.kakao_account.email,
               password: "",
@@ -350,15 +352,15 @@ var finishKakoLogin = /*#__PURE__*/function () {
               socialOnly: true,
               avatarUrl: userData.kakao_account.profile.profile_image_url
             });
-          case 28:
+          case 30:
             user = _context4.sent;
-          case 29:
+          case 31:
             req.session.loggedIn = true;
             req.session.user = user;
             return _context4.abrupt("return", res.redirect("/"));
-          case 34:
+          case 36:
             return _context4.abrupt("return", res.redirect("/login"));
-          case 35:
+          case 37:
           case "end":
             return _context4.stop();
         }
