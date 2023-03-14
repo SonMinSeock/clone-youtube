@@ -272,7 +272,8 @@ var startKakaoLogin = function startKakaoLogin(req, res) {
   };
   var params = new URLSearchParams(config).toString();
   console.log("start kakao params : ", params);
-  var finalUrl = "".concat(baseUrl, "?response_type=code&").concat(params);
+  var finalUrl = "".concat(baseUrl, "?response_type=code&").concat(params, " profile_nickname profile_image");
+  console.log("start kakao login final Url : ", finalUrl);
   return res.redirect(finalUrl);
 };
 exports.startKakaoLogin = startKakaoLogin;
@@ -293,7 +294,7 @@ var finishKakoLogin = /*#__PURE__*/function () {
             baseUrl = "https://kauth.kakao.com/oauth/token";
             params = new URLSearchParams(config).toString();
             console.log("final kakao params : ", params);
-            finalUrl = "".concat(baseUrl, "?").concat(params, " profile_nickname profile_image");
+            finalUrl = "".concat(baseUrl, "?").concat(params);
             _context4.next = 8;
             return (0, _nodeFetch["default"])(finalUrl, {
               method: "POST",
