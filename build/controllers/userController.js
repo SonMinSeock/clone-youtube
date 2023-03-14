@@ -415,7 +415,7 @@ var postEdit = /*#__PURE__*/function () {
           case 10:
             _context5.next = 12;
             return _User["default"].findByIdAndUpdate(_id, {
-              avatarUrl: file ? file.path : avatarUrl,
+              avatarUrl: file ? file.location : avatarUrl,
               name: name,
               email: email,
               username: username,
