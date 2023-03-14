@@ -268,9 +268,10 @@ var startKakaoLogin = function startKakaoLogin(req, res) {
   var baseUrl = "https://kauth.kakao.com/oauth/authorize";
   var config = {
     client_id: "6b6c7b0bc06af6815119ea637762e914",
-    redirect_uri: "http://localhost:4000/users/kakao/finish"
+    redirect_uri: "https://port-0-clone-youtube-nx562olf43veth.sel3.cloudtype.app/users/kakao/finish"
   };
   var params = new URLSearchParams(config).toString();
+  console.log("start kakao params : ", params);
   var finalUrl = "".concat(baseUrl, "?response_type=code&").concat(params);
   return res.redirect(finalUrl);
 };
@@ -285,60 +286,61 @@ var finishKakoLogin = /*#__PURE__*/function () {
             code = req.query.code;
             config = {
               client_id: "6b6c7b0bc06af6815119ea637762e914",
-              redirect_uri: "http://localhost:4000/users/kakao/finish",
+              redirect_uri: "https://port-0-clone-youtube-nx562olf43veth.sel3.cloudtype.app/users/kakao/finish",
               code: code,
               grant_type: "authorization_code"
             };
             baseUrl = "https://kauth.kakao.com/oauth/token";
             params = new URLSearchParams(config).toString();
-            finalUrl = "".concat(baseUrl, "?").concat(params, "&scope=account_email profile_nickname profile_image");
-            _context4.next = 7;
+            console.log("final kakao params : ", params);
+            finalUrl = "".concat(baseUrl, "?").concat(params, " profile_nickname profile_image");
+            _context4.next = 8;
             return (0, _nodeFetch["default"])(finalUrl, {
               method: "POST",
               headers: {
                 Accept: "application/json"
               }
             });
-          case 7:
+          case 8:
             data = _context4.sent;
-            _context4.next = 10;
+            _context4.next = 11;
             return data.json();
-          case 10:
+          case 11:
             json = _context4.sent;
             if (!("access_token" in json)) {
-              _context4.next = 33;
+              _context4.next = 34;
               break;
             }
             access_token = json.access_token;
             apiUrl = "https://kapi.kakao.com";
-            _context4.next = 16;
+            _context4.next = 17;
             return (0, _nodeFetch["default"])("".concat(apiUrl, "/v2/user/me"), {
               headers: {
                 Authorization: "Bearer ".concat(access_token)
               }
             });
-          case 16:
-            _context4.next = 18;
+          case 17:
+            _context4.next = 19;
             return _context4.sent.json();
-          case 18:
+          case 19:
             userData = _context4.sent;
             if (userData) {
-              _context4.next = 21;
+              _context4.next = 22;
               break;
             }
             return _context4.abrupt("return", res.redirect("/login"));
-          case 21:
-            _context4.next = 23;
+          case 22:
+            _context4.next = 24;
             return _User["default"].findOne({
               email: userData.kakao_account.email
             });
-          case 23:
+          case 24:
             user = _context4.sent;
             if (user) {
-              _context4.next = 28;
+              _context4.next = 29;
               break;
             }
-            _context4.next = 27;
+            _context4.next = 28;
             return _User["default"].create({
               email: userData.kakao_account.email,
               password: "",
@@ -348,15 +350,15 @@ var finishKakoLogin = /*#__PURE__*/function () {
               socialOnly: true,
               avatarUrl: userData.kakao_account.profile.profile_image_url
             });
-          case 27:
-            user = _context4.sent;
           case 28:
+            user = _context4.sent;
+          case 29:
             req.session.loggedIn = true;
             req.session.user = user;
             return _context4.abrupt("return", res.redirect("/"));
-          case 33:
-            return _context4.abrupt("return", res.redirect("/login"));
           case 34:
+            return _context4.abrupt("return", res.redirect("/login"));
+          case 35:
           case "end":
             return _context4.stop();
         }
