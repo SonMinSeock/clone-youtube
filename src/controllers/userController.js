@@ -160,7 +160,7 @@ export const startKakaoLogin = (req, res) => {
 
   const params = new URLSearchParams(config).toString();
 
-  const finalUrl = `${baseUrl}?response_type=code&client_id=6b6c7b0bc06af6815119ea637762e914&redirect_uri=https://port-0-clone-youtube-nx562olf43veth.sel3.cloudtype.app/users/kakao/finish`;
+  const finalUrl = `${baseUrl}?response_type=code&${params}`;
 
   return res.redirect(finalUrl);
 };
@@ -180,7 +180,7 @@ export const finishKakoLogin = async (req, res) => {
 
   const params = new URLSearchParams(config).toString();
 
-  const finalUrl = `${baseUrl}?redirect_uri=https://port-0-clone-youtube-nx562olf43veth.sel3.cloudtype.app/users/kakao/finish&scope=account_email profile_nickname profile_image`;
+  const finalUrl = `${baseUrl}?${params} profile_nickname profile_image`;
 
   const data = await fetch(finalUrl, {
     method: "POST",
