@@ -162,7 +162,7 @@ export const startKakaoLogin = (req, res) => {
 
   console.log("start kakao params : ", params);
 
-  const finalUrl = `${baseUrl}?response_type=code&${params} profile_nickname profile_image`;
+  const finalUrl = `${baseUrl}?response_type=code&${params}&scope=profile_nickname,profile_image`;
   console.log("start kakao login final Url : ", finalUrl);
   return res.redirect(finalUrl);
 };

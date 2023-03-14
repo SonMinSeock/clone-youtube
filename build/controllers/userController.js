@@ -272,7 +272,7 @@ var startKakaoLogin = function startKakaoLogin(req, res) {
   };
   var params = new URLSearchParams(config).toString();
   console.log("start kakao params : ", params);
-  var finalUrl = "".concat(baseUrl, "?response_type=code&").concat(params, " profile_nickname profile_image");
+  var finalUrl = "".concat(baseUrl, "?response_type=code&").concat(params, "&scope=profile_nickname,profile_image");
   console.log("start kakao login final Url : ", finalUrl);
   return res.redirect(finalUrl);
 };
