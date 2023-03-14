@@ -154,7 +154,8 @@ export const startKakaoLogin = (req, res) => {
   const baseUrl = "https://kauth.kakao.com/oauth/authorize";
   const config = {
     client_id: "6b6c7b0bc06af6815119ea637762e914",
-    redirect_uri: "http://localhost:4000/users/kakao/finish",
+    redirect_uri:
+      "https://port-0-clone-youtube-nx562olf43veth.sel3.cloudtype.app/users/kakao/finish",
   };
 
   const params = new URLSearchParams(config).toString();
