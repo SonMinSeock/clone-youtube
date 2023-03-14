@@ -102,8 +102,7 @@ var handleEnded = function handleEnded() {
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMute);
 volumeRange.addEventListener("input", handleVolumeChange);
-video.addEventListener("canplay", handleLoaddedMetadata);
-handleLoaddedMetadata();
+video.addEventListener("loadeddata", handleLoaddedMetadata);
 video.addEventListener("timeupdate", handleTimeUpdate);
 video.addEventListener("ended", handleEnded);
 videoContainer.addEventListener("mousemove", handleMouseMove);
