@@ -160,6 +160,8 @@ export const startKakaoLogin = (req, res) => {
 
   const params = new URLSearchParams(config).toString();
 
+  console.log("start kakao params : ", params);
+
   const finalUrl = `${baseUrl}?response_type=code&${params}`;
 
   return res.redirect(finalUrl);
@@ -179,6 +181,8 @@ export const finishKakoLogin = async (req, res) => {
   const baseUrl = "https://kauth.kakao.com/oauth/token";
 
   const params = new URLSearchParams(config).toString();
+
+  console.log("final kakao params : ", params);
 
   const finalUrl = `${baseUrl}?${params} profile_nickname profile_image`;
 
